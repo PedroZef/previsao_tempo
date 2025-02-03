@@ -1,0 +1,82 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  height: 100vh;
+  align-items: center;
+  background-color: #222222;
+  color: #fff;
+  display: flex;
+  justify-content: center;
+}
+
+main {
+  background-color: #333333;
+  padding: 2rem;
+  text-align: center;
+  border-radius: 10px;
+  justify-content: space-between;
+  max-width: 800px;
+}
+
+main>h1 {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+main #search-form {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 2px;
+  justify-content: center;
+  width: 100%;
+}
+
+main #search-form input {
+  flex: 1;
+  height: 3rem;
+  border-radius: 5px;
+  border: none;
+  padding: 0 0.8rem;
+}
+
+main #search-form button {
+  background-color: green;
+  border-radius: 5px;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+  padding: 0rem 0.8rem;
+  height: 3rem;
+}
+
+main #search-form button:hover {
+  background-color: #003cff;
+}
+
+main #tempo-info {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 0.5rem;
+}
+
+main #tempo-info img {
+  width: 100px;
+}
+
+main #tempo-info .tempo-dados h2 {
+  font-size: 1.4rem;
+  margin-bottom: 0.5rem;
+}
+
+main #tempo-info .tempo-dados span {
+  font-size: 1.6rem;
+  font-weight: bold;
+}
