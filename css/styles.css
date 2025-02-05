@@ -14,6 +14,11 @@ body {
   justify-content: center;
 }
 
+a {
+  text-decoration: none;
+  color: #fff;
+}
+
 main {
   background-color: #333333;
   padding: 2rem;
@@ -88,4 +93,9 @@ main #tempo-info .tempo-dados h2 {
 main #tempo-info .tempo-dados span {
   font-size: 1.6rem;
   font-weight: bold;
+}
+
+footer>p {
+  text-align: center;
+  margin: 1rem 0;
 }

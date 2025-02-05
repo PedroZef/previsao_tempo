@@ -22,7 +22,6 @@ form?.addEventListener('submit', async (event) => {
 `)
 
     const dados = await resposta.json()
-
     const infos = {
       temperatura: Math.round(dados.main.temp),
       local: dados.name,
