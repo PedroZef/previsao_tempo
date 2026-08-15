@@ -8,7 +8,7 @@ const BASE_URL = 'https://api.openweathermap.org/data/2.5/weather'
  * Lança um erro caso a chave não esteja configurada.
  */
 function getApiKey(): string {
-  const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY
+  const apiKey = import.meta.env.VITE_OPENWEATHER_API_KEY || '20686f166dd33a6c22a0f4e4d572963e'
   if (!apiKey || apiKey === 'your_api_key_here') {
     throw new Error(
       'Chave de API do OpenWeather não configurada. Defina VITE_OPENWEATHER_API_KEY no arquivo .env'

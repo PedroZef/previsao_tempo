@@ -109,6 +109,17 @@ Os arquivos otimizados e minificados serão gerados no diretório `dist/`.
 
 ---
 
+## 🌐 Deploy no GitHub Pages
+
+O projeto conta com fluxo automatizado de CI/CD via **GitHub Actions** (`.github/workflows/deploy.yml`). A cada push na branch `main`, a aplicação é testada, compilada e publicada automaticamente no **GitHub Pages**.
+
+🔗 **Demonstração Online**: [https://pedrozef.github.io/previsao_tempo/](https://pedrozef.github.io/previsao_tempo/)
+
+> **Nota para ativação no GitHub**:
+> Acesse o repositório no GitHub > **Settings** > **Pages** > em **Build and deployment > Source**, selecione **GitHub Actions**.
+
+---
+
 ## 👨‍💻 Autor
 
 Desenvolvido por **[Pedro Zeferino da Silva](https://github.com/PedroZef/)**.
