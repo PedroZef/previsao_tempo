@@ -1,0 +1,1075 @@
+/* ==========================================================================
+   Design System e Tokens de Tema (Weather Pulse UI)
+   ========================================================================== */
+
+:root {
+  /* Paleta Escura (Padrão) */
+  --bg-gradient-default: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
+  --surface-glass: rgba(255, 255, 255, 0.07);
+  --surface-glass-hover: rgba(255, 255, 255, 0.12);
+  --surface-glass-card: rgba(255, 255, 255, 0.05);
+  --border-glass: rgba(255, 255, 255, 0.12);
+  --border-glass-focus: rgba(56, 189, 248, 0.5);
+
+  /* Cores de Destaque e Marca */
+  --color-primary: #38bdf8;
+  --color-primary-hover: #0284c7;
+  --color-accent: #f59e0b;
+  --color-danger: #ef4444;
+  --color-success: #10b981;
+
+  /* Tipografia e Cores de Texto */
+  --text-primary: #f8fafc;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+  --input-bg: rgba(15, 23, 42, 0.55);
+  --input-bg-focus: rgba(15, 23, 42, 0.8);
+  --font-main: 'Outfit', 'Inter', system-ui, -apple-system, sans-serif;
+
+  /* Efeitos de Sombra e Vidro (Glassmorphism) */
+  --shadow-glass: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+  --shadow-glow: 0 0 24px rgba(56, 189, 248, 0.2);
+  --blur-amount: blur(16px);
+  --radius-sm: 8px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-pill: 9999px;
+
+  /* Transições e Curvas de Animação */
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Tokens do Modo Claro (Light Theme) */
+body[data-theme="light"] {
+  --bg-gradient-default: linear-gradient(135deg, #e0f2fe 0%, #f8fafc 50%, #dbeafe 100%);
+  --surface-glass: rgba(255, 255, 255, 0.75);
+  --surface-glass-hover: rgba(255, 255, 255, 0.95);
+  --surface-glass-card: rgba(255, 255, 255, 0.6);
+  --border-glass: rgba(255, 255, 255, 0.85);
+  --border-glass-focus: rgba(2, 132, 199, 0.6);
+
+  --color-primary: #0284c7;
+  --color-primary-hover: #0369a1;
+
+  --text-primary: #0f172a;
+  --text-secondary: #475569;
+  --text-muted: #64748b;
+  --input-bg: rgba(255, 255, 255, 0.85);
+  --input-bg-focus: #ffffff;
+
+  --shadow-glass: 0 8px 32px 0 rgba(31, 38, 135, 0.12);
+  --shadow-glow: 0 0 24px rgba(2, 132, 199, 0.18);
+}
+
+/* Planos de Fundo Atmosféricos Dinâmicos (Modo Escuro) */
+body[data-theme="dark"][data-weather="Clear"],
+body:not([data-theme="light"])[data-weather="Clear"] {
+  --bg-gradient: linear-gradient(135deg, #0284c7 0%, #0369a1 40%, #0f172a 100%);
+}
+body[data-theme="dark"][data-weather="Clouds"],
+body:not([data-theme="light"])[data-weather="Clouds"] {
+  --bg-gradient: linear-gradient(135deg, #334155 0%, #1e293b 50%, #0f172a 100%);
+}
+body[data-theme="dark"][data-weather="Rain"],
+body:not([data-theme="light"])[data-weather="Rain"],
+body[data-theme="dark"][data-weather="Drizzle"],
+body:not([data-theme="light"])[data-weather="Drizzle"] {
+  --bg-gradient: linear-gradient(135deg, #1e293b 0%, #0f172a 40%, #0284c7 100%);
+}
+body[data-theme="dark"][data-weather="Thunderstorm"],
+body:not([data-theme="light"])[data-weather="Thunderstorm"] {
+  --bg-gradient: linear-gradient(135deg, #1e1b4b 0%, #0f172a 50%, #312e81 100%);
+}
+body[data-theme="dark"][data-weather="Snow"],
+body:not([data-theme="light"])[data-weather="Snow"] {
+  --bg-gradient: linear-gradient(135deg, #475569 0%, #334155 50%, #94a3b8 100%);
+}
+body[data-theme="dark"][data-weather="Atmosphere"],
+body:not([data-theme="light"])[data-weather="Atmosphere"] {
+  --bg-gradient: linear-gradient(135deg, #374151 0%, #1f2937 60%, #111827 100%);
+}
+
+/* Planos de Fundo Atmosféricos Dinâmicos (Modo Claro) */
+body[data-theme="light"][data-weather="Clear"] {
+  --bg-gradient: linear-gradient(135deg, #bae6fd 0%, #7dd3fc 45%, #e0f2fe 100%);
+}
+body[data-theme="light"][data-weather="Clouds"] {
+  --bg-gradient: linear-gradient(135deg, #cbd5e1 0%, #e2e8f0 50%, #94a3b8 100%);
+}
+body[data-theme="light"][data-weather="Rain"],
+body[data-theme="light"][data-weather="Drizzle"] {
+  --bg-gradient: linear-gradient(135deg, #93c5fd 0%, #cbd5e1 50%, #60a5fa 100%);
+}
+body[data-theme="light"][data-weather="Thunderstorm"] {
+  --bg-gradient: linear-gradient(135deg, #c7d2fe 0%, #94a3b8 50%, #818cf8 100%);
+}
+body[data-theme="light"][data-weather="Snow"] {
+  --bg-gradient: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 50%, #cbd5e1 100%);
+}
+body[data-theme="light"][data-weather="Atmosphere"] {
+  --bg-gradient: linear-gradient(135deg, #e2e8f0 0%, #cbd5e1 60%, #94a3b8 100%);
+}
+
+/* ==========================================================================
+   Reset e Estilos Base
+   ========================================================================== */
+
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-main);
+  background: var(--bg-gradient, var(--bg-gradient-default));
+  background-attachment: fixed;
+  color: var(--text-primary);
+  min-height: 100vh;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem 0 0 0;
+  transition: background 0.8s ease-in-out, color 0.3s ease;
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ==========================================================================
+   Layout e Estrutura do App
+   ========================================================================== */
+
+.app-wrapper {
+  width: 100%;
+  max-width: 680px;
+  padding: 0 1rem;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 1.5rem;
+  margin: 0 auto 2rem auto;
+}
+
+/* Painel com Efeito Vidro Fosco (Glass Panel) */
+.glass-panel {
+  background: var(--surface-glass);
+  backdrop-filter: var(--blur-amount);
+  -webkit-backdrop-filter: var(--blur-amount);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-glass);
+  padding: 2rem;
+  transition: all var(--transition-smooth);
+}
+
+/* ==========================================================================
+   Cabeçalho e Identidade Visual
+   ========================================================================== */
+
+.app-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  cursor: default;
+}
+
+.brand-icon {
+  width: 2.15rem;
+  height: 2.15rem;
+  color: var(--color-primary);
+  filter: drop-shadow(0 0 8px rgba(56, 189, 248, 0.45));
+  animation: brandFloat 4s ease-in-out infinite;
+  transition: transform var(--transition-smooth), filter var(--transition-smooth);
+}
+
+.brand:hover .brand-icon {
+  transform: scale(1.1) rotate(6deg);
+  filter: drop-shadow(0 0 14px rgba(56, 189, 248, 0.75));
+}
+
+body[data-theme="light"] .brand-icon {
+  filter: drop-shadow(0 0 8px rgba(2, 132, 199, 0.35));
+}
+
+body[data-theme="light"] .brand:hover .brand-icon {
+  filter: drop-shadow(0 0 14px rgba(2, 132, 199, 0.65));
+}
+
+.brand-title {
+  font-size: 1.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  background: linear-gradient(135deg, #ffffff 0%, #38bdf8 50%, #ffffff 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: textShimmer 6s linear infinite;
+  transition: all var(--transition-smooth);
+}
+
+body[data-theme="light"] .brand-title {
+  background: linear-gradient(135deg, #0f172a 0%, #0284c7 50%, #0f172a 100%);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-subtitle {
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.header-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+}
+
+/* Botão de Alternância de Tema em Gradiente (Compacto) */
+.btn-theme-gradient {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 2.25rem;
+  height: 2.25rem;
+  border-radius: var(--radius-pill);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  background: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  box-shadow: 0 0 14px rgba(168, 85, 247, 0.4);
+  color: #ffffff;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  overflow: hidden;
+}
+
+body[data-theme="light"] .btn-theme-gradient {
+  background: linear-gradient(135deg, #f59e0b 0%, #ea580c 50%, #e11d48 100%);
+  box-shadow: 0 0 14px rgba(245, 158, 11, 0.4);
+}
+
+.btn-theme-gradient:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 0 20px rgba(168, 85, 247, 0.65);
+}
+
+body[data-theme="light"] .btn-theme-gradient:hover {
+  box-shadow: 0 0 20px rgba(245, 158, 11, 0.65);
+}
+
+.btn-theme-gradient:active {
+  transform: translateY(0) scale(0.96);
+}
+
+.btn-theme-gradient svg {
+  width: 1.1rem;
+  height: 1.1rem;
+  transition: all var(--transition-smooth);
+}
+
+/* Estados de visibilidade dos ícones Lua e Sol */
+body[data-theme="dark"] .theme-icon-sun,
+body:not([data-theme="light"]) .theme-icon-sun {
+  display: none;
+}
+
+body[data-theme="dark"] .theme-icon-moon,
+body:not([data-theme="light"]) .theme-icon-moon {
+  display: block;
+  animation: rotateIn 0.35s ease;
+}
+
+body[data-theme="light"] .theme-icon-moon {
+  display: none;
+}
+
+body[data-theme="light"] .theme-icon-sun {
+  display: block;
+  animation: rotateIn 0.35s ease;
+}
+
+/* Seletor de Unidades (°C / °F) */
+.unit-toggle {
+  display: flex;
+  background: rgba(0, 0, 0, 0.25);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  gap: 2px;
+}
+
+body[data-theme="light"] .unit-toggle {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.unit-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-secondary);
+  font-family: inherit;
+  font-size: 0.8rem;
+  font-weight: 600;
+  padding: 0.25rem 0.65rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.unit-btn.active {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 8px rgba(56, 189, 248, 0.3);
+}
+
+body[data-theme="dark"] .unit-btn.active,
+body:not([data-theme="light"]) .unit-btn.active {
+  color: #0f172a;
+}
+
+/* ==========================================================================
+   Formulário de Busca e Controles
+   ========================================================================== */
+
+.search-section {
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.search-form {
+  display: flex;
+  gap: 0.5rem;
+  position: relative;
+}
+
+.input-group {
+  flex: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.search-input-icon {
+  position: absolute;
+  left: 0.85rem;
+  width: 1.1rem;
+  height: 1.1rem;
+  color: var(--text-muted);
+  pointer-events: none;
+}
+
+.search-input {
+  width: 100%;
+  height: 2.75rem;
+  background: var(--input-bg);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 0 0.85rem 0 2.5rem;
+  font-family: inherit;
+  font-size: 0.925rem;
+  color: var(--text-primary);
+  outline: none;
+  transition: all var(--transition-fast);
+}
+
+.search-input::placeholder {
+  color: var(--text-muted);
+}
+
+.search-input:focus {
+  border-color: var(--border-glass-focus);
+  background: var(--input-bg-focus);
+  box-shadow: var(--shadow-glow);
+}
+
+.btn {
+  height: 2.75rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: inherit;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  padding: 0 1.1rem;
+}
+
+.btn-primary {
+  background: var(--color-primary);
+  color: #ffffff;
+  box-shadow: 0 3px 10px rgba(56, 189, 248, 0.25);
+}
+
+body[data-theme="dark"] .btn-primary,
+body:not([data-theme="light"]) .btn-primary {
+  color: #0f172a;
+}
+
+.btn-primary:hover:not(:disabled) {
+  background: var(--color-primary-hover);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(56, 189, 248, 0.35);
+}
+
+.btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-primary:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.btn-icon-only {
+  width: 2.75rem;
+  height: 2.75rem;
+  padding: 0;
+  background: rgba(255, 255, 255, 0.08);
+  color: var(--text-primary);
+  border: 1px solid var(--border-glass);
+}
+
+body[data-theme="light"] .btn-icon-only {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.btn-icon-only:hover {
+  background: var(--surface-glass-hover);
+  border-color: var(--color-primary);
+  color: var(--color-primary);
+  transform: translateY(-1px);
+}
+
+.btn-icon-only svg {
+  width: 1.15rem;
+  height: 1.15rem;
+}
+
+.recent-tag {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  padding: 0.2rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.775rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+/* Tags de Histórico de Buscas Recentes */
+.recent-searches {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.825rem;
+  color: var(--text-secondary);
+}
+
+.recent-searches-label {
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.recent-tag {
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid var(--border-glass);
+  color: var(--text-secondary);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+body[data-theme="light"] .recent-tag {
+  background: rgba(255, 255, 255, 0.65);
+}
+
+.recent-tag:hover {
+  background: var(--surface-glass-hover);
+  color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+/* ==========================================================================
+   Seção de Exibição das Informações Meteorológicas
+   ========================================================================== */
+
+.weather-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  animation: fadeIn 0.4s ease-out;
+}
+
+/* Destaque Principal (Local, Data, Temperatura e Ícone) */
+.weather-main {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--border-glass);
+}
+
+.location-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.location-title {
+  font-size: 1.75rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  letter-spacing: -0.01em;
+}
+
+.location-badge {
+  font-size: 0.75rem;
+  background: var(--color-primary);
+  color: #ffffff;
+  padding: 0.15rem 0.5rem;
+  border-radius: 4px;
+  font-weight: 700;
+}
+
+body[data-theme="dark"] .location-badge,
+body:not([data-theme="light"]) .location-badge {
+  color: #0f172a;
+}
+
+.date-info {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  text-transform: capitalize;
+}
+
+.temp-badge-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-top: 0.25rem;
+}
+
+.temp-primary {
+  font-size: 3.5rem;
+  font-weight: 800;
+  line-height: 1;
+  letter-spacing: -0.03em;
+  color: var(--text-primary);
+}
+
+.condition-text {
+  font-size: 1.1rem;
+  color: var(--color-primary);
+  font-weight: 600;
+}
+
+.weather-icon-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.weather-icon-img {
+  width: 110px;
+  height: 110px;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.25));
+  animation: floatIcon 4s ease-in-out infinite;
+}
+
+/* Grade de Métricas Climáticas */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+}
+
+.metric-card {
+  background: var(--surface-glass-card);
+  border: 1px solid var(--border-glass);
+  border-radius: var(--radius-md);
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  transition: all var(--transition-fast);
+}
+
+.metric-card:hover {
+  background: var(--surface-glass-hover);
+  transform: translateY(-2px);
+}
+
+.metric-header {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+.metric-icon {
+  width: 1rem;
+  height: 1rem;
+  color: var(--color-primary);
+}
+
+.metric-value {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.metric-sub {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+}
+
+/* ==========================================================================
+   Estados da Interface (Carregamento e Estado Vazio)
+   ========================================================================== */
+
+/* Esqueleto de Carregamento (Skeleton Screen) */
+.skeleton-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.05) 25%,
+    rgba(255, 255, 255, 0.12) 37%,
+    rgba(255, 255, 255, 0.05) 63%
+  );
+  background-size: 400% 100%;
+  animation: skeletonPulse 1.4s ease infinite;
+  border-radius: var(--radius-sm);
+}
+
+body[data-theme="light"] .skeleton {
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.04) 25%,
+    rgba(0, 0, 0, 0.09) 37%,
+    rgba(0, 0, 0, 0.04) 63%
+  );
+  background-size: 400% 100%;
+}
+
+.skeleton-title {
+  width: 50%;
+  height: 2rem;
+}
+
+.skeleton-temp {
+  width: 30%;
+  height: 3.5rem;
+}
+
+.skeleton-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
+  gap: 0.85rem;
+}
+
+.skeleton-card {
+  height: 5.5rem;
+  border-radius: var(--radius-md);
+}
+
+/* Estado Vazio Inicial */
+.state-empty {
+  text-align: center;
+  padding: 3rem 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.state-empty-icon {
+  width: 4rem;
+  height: 4rem;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.state-empty h3 {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+
+.state-empty p {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  max-width: 380px;
+}
+
+/* ==========================================================================
+   Sistema de Notificações Flutuantes (Toast)
+   ========================================================================== */
+
+.toast-container {
+  position: fixed;
+  bottom: 1.5rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  max-width: 380px;
+  width: calc(100% - 3rem);
+}
+
+.toast {
+  background: #1e293b;
+  border: 1px solid var(--border-glass);
+  border-left: 4px solid var(--color-danger);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+  padding: 0.85rem 1rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  color: #ffffff;
+  animation: slideInRight 0.3s ease-out;
+}
+
+.toast.toast-warning {
+  border-left-color: var(--color-accent);
+}
+
+.toast.toast-success {
+  border-left-color: var(--color-success);
+}
+
+.toast-icon {
+  width: 1.25rem;
+  height: 1.25rem;
+  flex-shrink: 0;
+  margin-top: 0.15rem;
+}
+
+.toast.toast-danger .toast-icon {
+  color: var(--color-danger);
+}
+
+.toast-message {
+  font-size: 0.875rem;
+  line-height: 1.4;
+  flex: 1;
+}
+
+.toast-close {
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  cursor: pointer;
+  font-size: 1.1rem;
+  line-height: 1;
+  padding: 0.1rem;
+}
+
+.toast-close:hover {
+  color: #ffffff;
+}
+
+/* ==========================================================================
+   Rodapé de Largura Total (Full-Width no final da página)
+   ========================================================================== */
+
+.app-footer {
+  width: 100%;
+  margin-top: auto;
+  padding: 1.25rem 1rem;
+  background: linear-gradient(180deg, rgba(15, 23, 42, 0.65) 0%, rgba(15, 23, 42, 0.9) 100%),
+              linear-gradient(90deg, rgba(56, 189, 248, 0.08), rgba(168, 85, 247, 0.12), rgba(236, 72, 153, 0.08));
+  backdrop-filter: var(--blur-amount);
+  -webkit-backdrop-filter: var(--blur-amount);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 -8px 24px rgba(0, 0, 0, 0.25);
+  text-align: center;
+  transition: all var(--transition-smooth);
+}
+
+/* Modo Claro: cor cinza por inteiro no final da página */
+body[data-theme="light"] .app-footer {
+  background: #f1f5f9;
+  border-top: 1px solid #cbd5e1;
+  box-shadow: 0 -4px 16px rgba(15, 23, 42, 0.04);
+}
+
+.footer-container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.footer-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+body[data-theme="light"] .footer-content {
+  color: #475569;
+}
+
+/* Link do Autor no Modo Escuro */
+.footer-author-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  background: linear-gradient(135deg, #38bdf8 0%, #a78bfa 50%, #f472b6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 700;
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+/* Link do Autor no Modo Claro (Cinza escuro com hover em azul) */
+body[data-theme="light"] .footer-author-link {
+  background: none;
+  -webkit-background-clip: initial;
+  -webkit-text-fill-color: initial;
+  color: #1e293b;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #94a3b8;
+  text-underline-offset: 3px;
+}
+
+.footer-author-link:hover {
+  filter: brightness(1.2);
+  transform: translateY(-1px);
+}
+
+body[data-theme="light"] .footer-author-link:hover {
+  color: #0284c7;
+  text-decoration-color: #0284c7;
+  filter: none;
+}
+
+.footer-link-icon {
+  width: 0.9rem;
+  height: 0.9rem;
+  color: #a78bfa;
+  -webkit-text-fill-color: initial;
+  transition: transform var(--transition-fast);
+}
+
+body[data-theme="light"] .footer-link-icon {
+  color: #64748b;
+}
+
+body[data-theme="light"] .footer-author-link:hover .footer-link-icon {
+  color: #0284c7;
+}
+
+.footer-author-link:hover .footer-link-icon {
+  transform: translate(2px, -2px);
+}
+
+.footer-divider {
+  color: var(--text-muted);
+  opacity: 0.6;
+}
+
+body[data-theme="light"] .footer-divider {
+  color: #94a3b8;
+}
+
+/* Badge OpenWeather no Modo Escuro */
+.footer-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.15), rgba(168, 85, 247, 0.15));
+  border: 1px solid rgba(56, 189, 248, 0.3);
+  color: var(--color-primary);
+  padding: 0.15rem 0.65rem;
+  border-radius: var(--radius-pill);
+  font-size: 0.775rem;
+  font-weight: 600;
+}
+
+/* Badge OpenWeather no Modo Claro */
+body[data-theme="light"] .footer-badge {
+  background: #e2e8f0;
+  border: 1px solid #cbd5e1;
+  color: #475569;
+}
+
+/* Ocultador visual acessível para leitores de tela */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ==========================================================================
+   Animações
+   ========================================================================== */
+
+@keyframes brandFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(3deg);
+  }
+}
+
+@keyframes textShimmer {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatIcon {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes skeletonPulse {
+  0% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0 50%;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes rotateIn {
+  from {
+    opacity: 0;
+    transform: rotate(-90deg) scale(0.6);
+  }
+  to {
+    opacity: 1;
+    transform: rotate(0) scale(1);
+  }
+}
+
+/* ==========================================================================
+   Responsividade e Breakpoints Mobile
+   ========================================================================== */
+
+@media (max-width: 600px) {
+  .glass-panel {
+    padding: 1.25rem;
+  }
+
+  .app-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .weather-main {
+    flex-direction: column-reverse;
+    text-align: center;
+    align-items: center;
+  }
+
+  .location-title {
+    justify-content: center;
+  }
+
+  .temp-badge-group {
+    justify-content: center;
+  }
+
+  .search-form {
+    flex-wrap: wrap;
+  }
+
+  .search-form .btn-primary {
+    flex: 1;
+  }
+
+  .metrics-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,36 +1,148 @@
 <!doctype html>
-<html lang="pt-br">
-  <head>
+<html lang="pt-BR">
+
+<head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description"
+        content="Previsão do tempo em tempo real com métricas detalhadas de sensação térmica, umidade, vento e pressão atmosférica." />
+    <meta name="theme-color" content="#0f172a" />
+    <title>WeatherPulse — Condições e Previsão do Tempo</title>
+
+    <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Heebo:wght@100..900&family=Roboto:wght@100..900&display=swap"
-      rel="stylesheet"
-    />
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+</head>
 
-    <title>Condição do Tempo</title>
-    <link rel="stylesheet" href="./css/styles.css" />
-  </head>
+<body>
+    <div class="app-wrapper">
+        <main class="glass-panel" id="main-content">
+            <!-- Cabeçalho Principal -->
+            <header class="app-header">
+                <div class="brand">
+                    <svg class="brand-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                        stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z" />
+                        <path d="M22 10a3 3 0 0 0-3-3h-1" />
+                    </svg>
+                    <div>
+                        <h1 class="brand-title">WeatherPulse</h1>
+                        <p class="brand-subtitle">Previsão meteorológica em tempo real</p>
+                    </div>
+                </div>
 
-  <body>
-    <main class="container">
-      <h1>Condições Real Do Tempo</h1>
+                <!-- Controles do Cabeçalho (Tema e Unidades) -->
+                <div class="header-controls">
+                    <button type="button" id="btn-theme-toggle" class="btn-theme-gradient"
+                        aria-label="Alternar tema claro e escuro" title="Alternar tema" aria-pressed="false">
+                        <svg class="theme-icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z" />
+                        </svg>
+                        <svg class="theme-icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="12" cy="12" r="4" />
+                            <path d="M12 2v2" />
+                            <path d="M12 20v2" />
+                            <path d="m4.93 4.93 1.41 1.41" />
+                            <path d="m17.66 17.66 1.41 1.41" />
+                            <path d="M2 12h2" />
+                            <path d="M20 12h2" />
+                            <path d="m6.34 17.66-1.41 1.41" />
+                            <path d="m19.07 4.93-1.41 1.41" />
+                        </svg>
+                        <span class="theme-text sr-only">Alternar tema</span>
+                    </button>
 
-      <section id="search-form">
-        <form>
-          <input type="text" id="input-localizacao" />
-          <button id="button-localizacao">Pesquisar</button>
-        </form>
-      </section>
+                    <!-- Seletor de Unidades (°C / °F) -->
+                    <div class="unit-toggle" role="group" aria-label="Selecionar unidade de temperatura">
+                        <button type="button" id="unit-celsius" class="unit-btn active" aria-pressed="true">
+                            °C
+                        </button>
+                        <button type="button" id="unit-fahrenheit" class="unit-btn" aria-pressed="false">
+                            °F
+                        </button>
+                    </div>
+                </div>
+            </header>
 
-      <section id="tempo-info"></section>
-      <footer>
-        <p>&copy; 2025  <a href="https://github.com/PedroZef/">Pedro Zeferino da Silva</a></p>
-      </footer>
-    </main>
+            <!-- Controles de Busca -->
+            <section class="search-section" aria-label="Pesquisa de localização">
+                <form class="search-form" id="search-form" role="search">
+                    <div class="input-group">
+                        <label for="input-localizacao" class="sr-only">
+                            Nome da cidade
+                        </label>
+                        <svg class="search-input-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                            stroke-width="2" aria-hidden="true">
+                            <circle cx="11" cy="11" r="8" />
+                            <line x1="21" y1="21" x2="16.65" y2="16.65" />
+                        </svg>
+                        <input type="search" id="input-localizacao" class="search-input"
+                            placeholder="Buscar cidade (ex: Rio de Janeiro, Tokyo)..." autocomplete="off" required />
+                    </div>
 
-    <script src="js/main.js"></script>
-  </body>
+                    <button type="button" id="btn-geolocation" class="btn btn-icon-only"
+                        title="Usar minha localização atual" aria-label="Usar minha localização atual">
+                        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor"
+                            stroke-width="2" aria-hidden="true">
+                            <circle cx="12" cy="12" r="3" />
+                            <path d="M12 2v3" />
+                            <path d="M12 19v3" />
+                            <path d="M2 12h3" />
+                            <path d="M19 12h3" />
+                        </svg>
+                    </button>
+
+                    <button type="submit" id="btn-search" class="btn btn-primary">
+                        <span>Pesquisar</span>
+                    </button>
+                </form>
+
+                <!-- Histórico de Buscas Recentes -->
+                <nav id="recent-searches" class="recent-searches" aria-label="Buscas recentes"></nav>
+            </section>
+
+            <!-- Contêiner de Exibição das Informações Meteorológicas -->
+            <section id="tempo-info" aria-live="polite" aria-atomic="true">
+                <!-- Conteúdo preenchido dinamicamente via TypeScript -->
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Rodapé de Largura Total (Full-Width Body Footer) -->
+    <footer class="app-footer">
+      <div class="footer-container">
+        <p class="footer-content">
+          <span>Desenvolvido com dedicação por</span>
+          <a
+            href="https://github.com/PedroZef/"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="footer-author-link"
+          >
+            <span>Pedro Zeferino da Silva</span>
+            <svg class="footer-link-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/>
+              <polyline points="15 3 21 3 21 9"/>
+              <line x1="10" y1="14" x2="21" y2="3"/>
+            </svg>
+          </a>
+          <span class="footer-divider" aria-hidden="true">&bull;</span>
+          <span class="footer-badge">Powered by OpenWeather</span>
+        </p>
+      </div>
+    </footer>
+
+    <!-- Contêiner de Notificações Toast -->
+    <div id="toast-container" class="toast-container" aria-live="assertive"></div>
+
+    <!-- Ponto de Entrada do Módulo TypeScript -->
+    <script type="module" src="/src/main.ts"></script>
+</body>
+
 </html>
